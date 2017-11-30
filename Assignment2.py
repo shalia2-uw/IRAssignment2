@@ -59,7 +59,14 @@ cnt =0
 cond = False
 while cond == False:
     rank1 = beta*np.dot(newMatrix,rank0) + (1-beta)*np.ones((size,1))*(1/size)
-    cond = np.allclose(rank0,rank1)
+     #for row in (rank1,rank0):        
+        #diff = sum(abs(rank1-rank0))
+    if(sum(abs(rank1-rank0))>epsilon):
+       cond = False
+       rank0 = rank1 
+    else:
+       cond = True
+    #cond = np.allclose(rank0,rank1)
     if cond == False:
         rank0 = rank1
     cnt = cnt +1
