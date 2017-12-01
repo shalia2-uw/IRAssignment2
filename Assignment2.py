@@ -26,7 +26,7 @@ for row in inputFile:
     j = int(row[1] -1)
     k = row[2]
     
-    initMatrix[i,j] = k
+    initMatrix[j,i] = k
 
 #normalizing rowValues
 colSum = initMatrix.sum(axis=0)
@@ -34,7 +34,7 @@ colSum = initMatrix.sum(axis=0)
 transMatrix = np.transpose(initMatrix)
 newMatrix = np.zeros((size,size))
 #normalizing matrix
-for i, (row,colSum) in enumerate(zip(initMatrix,colSum)):
+for i, (row,colSum) in enumerate(zip(transMatrix,colSum)):
     if colSum !=0:
         newMatrix[i,:] = row / colSum
     else:
